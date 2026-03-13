@@ -110,7 +110,7 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.1);
         }
 
-        .menu-toggle:hover .menu-dropdown {
+        .menu-toggle.active .menu-dropdown {
             display: flex;
         }
 
@@ -230,6 +230,19 @@
             }
         }
     </style>
+    <script>
+        function toggleMenu() {
+            const dropdown = document.querySelector(".menu-dropdown");
+            dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+        }
+        document.addEventListener("click", function(event) {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const dropdown = document.querySelector(".menu-dropdown");
+            if (!menuToggle.contains(event.target)) {
+                dropdown.style.display = "none";
+            }
+        });
+    </script>
 </head>
 <body>
     <!-- HERO HEADER -->
@@ -239,7 +252,7 @@
             <a href="shop.html">Shop All</a>
             <a href="about.html">About the Brand</a>
             <a href="studio.html">The Arvalo Studio</a>
-            <div class="menu-toggle">
+            <div class="menu-toggle" onclick="toggleMenu()">
                 ≡
                 <div class="menu-dropdown">
                     <a href="shop.html">01 Shop All</a>
